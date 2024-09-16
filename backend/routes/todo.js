@@ -14,7 +14,7 @@ router.post('/create', (req, res) => {
         message: 'Todo created successfully'
     })
 })
-router.get('/findall', async(req, res) => {
+router.get('/fetchAll', async(req, res) => {
     const response = await Todo.find({})
     res.json({
         todos:response
@@ -27,8 +27,9 @@ router.delete('/delete/:id', async (req, res) => {
         message: 'Todo deleted successfully'
     })
 })
-router.post('/markCompleted/:id', async (req, res) => {
-    const id = req.params.id;
+router.post('/markCompleted/:Id', async (req, res) => {
+    const id = req.params.Id;
+    console.log(id)
     await Todo.updateOne({ _id: id  },
         {
             "$set": {
